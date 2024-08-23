@@ -1,0 +1,29 @@
+name: dagger
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    name: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Call dummy-tests func through Dagger module
+        uses: dagger/dagger-for-github@v5
+        with:
+          version: "latest"
+          verb: call
+          module: github.com/tedd-E/dummy-tests@main
+          args: hello --greeting=whats --name=updog
+          cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
+
+      - name: Call dummy-tests func through current module
+        uses: dagger/dagger-for-github@v5
+        with:
+          version: "latest"
+          verb: call
+          args: call-custom-mod
+          cloud-token: ${{ secrets.DAGGER_CLOUD_TOKEN }}
