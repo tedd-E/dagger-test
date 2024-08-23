@@ -52,3 +52,7 @@ func (m *HelloDagger) BuildEnv(source *dagger.Directory) *dagger.Container {
 		Install().
 		Container()
 }
+
+func (m *HelloDagger) CallCustomMod(ctx context.Context) (string, error) {
+	return dag.DummyTests().Hello(ctx)
+}

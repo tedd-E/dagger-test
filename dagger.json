@@ -3,6 +3,10 @@
   "sdk": "go",
   "dependencies": [
     {
+      "name": "dummy-tests",
+      "source": "github.com/tedd-E/dummy-tests@4082981f710b5a0f2cdcc15a3b332ae790b9e304"
+    },
+    {
       "name": "node",
       "source": "github.com/dagger/dagger/sdk/typescript/dev/node@f1aa5e117e163449208519ce6c6b1dbdb8ef5d79"
     }
